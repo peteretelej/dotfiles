@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# include user bin in PATH if exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+export GOROOT="/usr/local/go"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+export ANDROID_HOME="$HOME/androidsdks"
+
+# user global npm
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+
+
+
