@@ -5,9 +5,15 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# golang
 export GOROOT="/usr/local/go"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+# rust cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+
 
 export ANDROID_HOME="$HOME/androidsdks"
 
