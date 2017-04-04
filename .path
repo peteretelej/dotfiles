@@ -19,6 +19,9 @@ export ANDROID_HOME="$HOME/androidsdks"
 # user global npm
 export PATH="$HOME/.npm-global/bin:$PATH"
 
-
+# oracle env
+export LD_LIBRARY_PATH="$HOME/oracle/instantclient_12_2"
+export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
+export PATH="$PATH:$LD_LIBRARY_PATH"
 
 
