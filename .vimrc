@@ -6,8 +6,7 @@ set nocompatible        " be iMproved
 "
 " Favorite :colors 
 "	(dark)- gruvbox,xoria256,molokai, vividchalk, inkpot, wombat, zenburn,,
-"	candy, 	grb256, distinguished, 
-"		candycode
+"	candy, 	grb256, distinguished, candycode
 "	(light)- papercolor, github
 set t_Co=256 "256 colors
 "set background=dark
@@ -53,6 +52,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+" Dockerfile
+Plugin 'ekalinin/Dockerfile.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
