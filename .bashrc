@@ -126,7 +126,7 @@ set -o vi
 
 # Load the shell dotfiles
 # .path for env variables
-for file in ~/.{bash_aliases,path,bashrc}; do
+for file in ~/.{bash_aliases,path}; do
 	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
 		# shellcheck source=/dev/null
 		source "$file"
