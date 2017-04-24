@@ -1,3 +1,5 @@
+set shell=/bin/bash " use bash shell, fish shell fix
+
 set nocompatible        " be iMproved
 
 " COLORSCHEMES
