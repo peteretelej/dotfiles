@@ -78,6 +78,11 @@ sudo apt-add-repository ppa:fish-shell/release-2
 sudo apt-get update
 sudo apt-get install fish
 ```
+
+Install _omf_ to better manage fish
+```
+curl -L https://get.oh-my.fish | fish
+```
  
 Recommended fish config ( `vim ~/.config/fish/config.fish` )
 ```
@@ -91,11 +96,6 @@ set -g theme_powerline_fonts yes
 set -x GOROOT /usr/local/go
 set -x GOPATH  $HOME/go
 set -x PATH $PATH $GOROOT/bin $GOPATH/bin
-```
-
-Install _omf_ to better manage fish
-```
-curl -L https://get.oh-my.fish | fish
 ```
 
 Install poweline-fonts, for omf theme below
@@ -113,6 +113,11 @@ rm -rf fonts
 Install __bobthefish__ omf theme
 ```
 omf install bobthefish
+```
+
+Use fish as default shell
+```
+chsh -s `which fish`
 ```
 
 
