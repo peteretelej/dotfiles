@@ -63,10 +63,58 @@ wget https://raw.githubusercontent.com/fatih/molokai/master/colors/molokai.vim
 ```
 
 
-### Optional 
-- Setup Node <see javascript guide>+install webpack, eslint, jslint
+# OPTIONAL CONFIGS 
+
+## Setup Nodejs
+<see javascript guide> +install webpack, eslint, jslint
+
    - Nodejs from official website (curl .. |bash)
    - jshint (for js syntax)
+
+
+## Install fish shell
+```
+sudo apt-add-repository ppa:fish-shell/release-2
+sudo apt-get update
+sudo apt-get install fish
+```
+ 
+Recommended fish config ( `vim ~/.config/fish/config.fish` )
+```
+set -g theme_color_scheme dark
+set -g theme_display_user yes
+set -g theme_title_display_path yes
+set -g theme_title_display_user yes
+set -g theme_powerline_fonts yes
+
+
+set -x GOROOT /usr/local/go
+set -x GOPATH  $HOME/go
+set -x PATH $PATH $GOROOT/bin $GOPATH/bin
+```
+
+Install _omf_ to better manage fish
+```
+curl -L https://get.oh-my.fish | fish
+```
+
+Install poweline-fonts, for omf theme below
+```
+# clone
+git clone https://github.com/powerline/fonts.git
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+```
+
+Install __bobthefish__ omf theme
+```
+omf install bobthefish
+```
+
 
 
 
