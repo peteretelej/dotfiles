@@ -12,7 +12,7 @@ set nocompatible        " be iMproved
 "	(light)- papercolor, github
 set t_Co=256 "256 colors
 "set background=dark
-colorscheme xoria256
+colorscheme molokai
 
 syntax enable           " enable syntax processing
 set laststatus=2		" always showstatusline
