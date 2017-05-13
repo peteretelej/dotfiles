@@ -70,6 +70,17 @@ wget https://raw.githubusercontent.com/fatih/molokai/master/colors/molokai.vim
    - Nodejs from official website (curl .. |bash)
    - jshint (for js syntax)
 
+## Install powerline fonts
+```
+# clone
+git clone https://github.com/powerline/fonts.git
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+```
 
 ## Setup zsh
 ```
