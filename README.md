@@ -19,7 +19,7 @@ cd dotfiles
 
 ## Install Exuberant ctags for the Tagbar
 ```bash
-sudo apt-get install exuberant-ctags
+sudo apt-get install -y exuberant-ctags
 ```
 
 ## Create required vim folders:
@@ -84,7 +84,7 @@ rm -rf fonts
 
 ## Setup zsh
 ```
-sudo apt-get install zsh
+sudo apt-get install -y zsh
 
 # setup oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
