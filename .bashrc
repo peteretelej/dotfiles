@@ -133,6 +133,6 @@ set -o vi
 	tr ' ' '\n')" scp sftp ssh
 
 # load .path for env variables
-. .path
+. ~/.path
 
 
