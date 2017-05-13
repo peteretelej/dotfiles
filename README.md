@@ -1,21 +1,20 @@
 # Etelej's dotfiles 
 
-## Update packages, and get dotfiles
-```bash
+
+# Initial Setup
+```
 sudo apt-get update
+sudo apt-get install -y \
+	git \
+	curl \
+	vim-nox \
+	tmux 
+```
+
+# Get dotfiles
+```bash
 git clone https://github.com/peteretelej/dotfiles.git 
 cd dotfiles
-```
-
-## Install `vim-nox`
-Has Lua support required by neocomplete plugin:
-```bash
-sudo apt-get install vim-nox
-```
-
-## Install `tmux` - terminal multiplexer
-```bash
-sudo apt-get install tmux
 ```
 
 ## Install Exuberant ctags for the Tagbar
@@ -71,3 +70,12 @@ wget https://raw.githubusercontent.com/fatih/molokai/master/colors/molokai.vim
    - Nodejs from official website (curl .. |bash)
    - jshint (for js syntax)
 
+
+## Setup zsh
+```
+sudo apt-get install zsh
+
+# setup oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# also changes default shell ie chsh -s $(which zsh)
+```
