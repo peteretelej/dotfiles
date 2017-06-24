@@ -205,6 +205,11 @@ Plugin 'mxw/vim-jsx'
 
 Plugin 'StanAngeloff/php.vim'
 
+" html
+Plugin 'othree/html5.vim'
+
+
+
 "========== End of  Plugins =======================
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
