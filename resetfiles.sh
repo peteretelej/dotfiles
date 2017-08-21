@@ -1,14 +1,9 @@
 #!/bin/bash
 
 echo "Installing dotfiles into current profile"
-files=($(ls -af|awk '/^\./ && ! /\.$/'))
+files=($(ls -af|awk '/^\./ && ! /\.$/ && ! /\.git/'))
 for f in $files
 do
-	if [ "$f" = ".git" ]
-	then
-		continue
-	fi
-
 	cp ./${f} ~/.
 
 	if [ $? -ne 0 ]
