@@ -43,6 +43,7 @@ set noswapfile
 "set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 autocmd BufRead,BufNewFile *.gohtml set filetype=html
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 filetype off                  " required by Vundle
 
