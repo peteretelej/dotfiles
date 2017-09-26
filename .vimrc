@@ -202,6 +202,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 "========== Javascript Plugins ====================
 Plugin 'pangloss/vim-javascript'
 
+Plugin 'posva/vim-vue'
+
 " jsx support
 Plugin 'mxw/vim-jsx'
 
