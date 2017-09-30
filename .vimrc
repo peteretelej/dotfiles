@@ -184,10 +184,6 @@ Plugin 'tpope/vim-surround'
 " gitgutter
 Plugin 'airblade/vim-gitgutter'
 
-" vim-json
-Plugin 'elzr/vim-json'
-let g:vim_json_syntax_conceal = 0
-
 "syntastic
 Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
@@ -200,12 +196,13 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
 "========== Javascript Plugins ====================
+" vim-json
+Plugin 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
+
 Plugin 'pangloss/vim-javascript'
 
 Plugin 'posva/vim-vue'
-
-" jsx support
-Plugin 'mxw/vim-jsx'
 
 Plugin 'StanAngeloff/php.vim'
 
