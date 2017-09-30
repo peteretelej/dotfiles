@@ -199,6 +199,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 " vim-json
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
+" pretty format json properly
+au FileType json setlocal equalprg=python\ -m\ json.tool
 
 Plugin 'pangloss/vim-javascript'
 
