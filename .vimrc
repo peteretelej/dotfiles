@@ -92,7 +92,6 @@ Plugin 'tpope/vim-commentary'
 ""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " autoclosevim
 "let g:NERDTreeShowHidden=1
 
-Plugin 'wakatime/vim-wakatime' 
 
 "======================[ GO plugins ]=======================
 Plugin 'fatih/vim-go' " Rem to :GoInstallBinaries & :GoUpdateBinaries
