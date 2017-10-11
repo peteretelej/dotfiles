@@ -211,6 +211,9 @@ Plugin 'StanAngeloff/php.vim'
 " html
 Plugin 'othree/html5.vim'
 
+" yaml 
+Plugin 'pearofducks/ansible-vim'
+
 
 
 "========== End of  Plugins =======================
