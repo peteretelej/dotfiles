@@ -17,3 +17,6 @@ export ANDROID_HOME="$HOME/androidsdks"
 
 # user global npm
 export PATH="$HOME/.npm-global/bin:$PATH"
+
+# FZF preferred command
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --depth 20 -f -g ""'

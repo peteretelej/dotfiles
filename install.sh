@@ -27,7 +27,8 @@ sudo apt-get update && \
 	curl \
 	vim-nox \
 	tmux \
-	exuberant-ctags
+	exuberant-ctags \
+	silversearcher-ag
 
 if [ $? -ne 0 ]
 then
@@ -47,9 +48,6 @@ git clone https://github.com/powerline/fonts.git && cd fonts && \
 	./install.sh && cd .. && rm -rf fonts
 
 
-# install vundle
-rm -rf ~/.vim/bundle/Vundle.vim 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo "installing dotfiles into user profile"
 files=($(ls -af|awk '/^\./ && ! /\.$/ && ! /\.git/'))
@@ -65,11 +63,10 @@ do
 done
 
 # install vim plugins
-vim -c 'PluginInstall' -c 'qa!'
-
+vim -c 'PlugInstall' -c 'qa!'
 
 # copy colorschemes to correct directory
-cp ~/.vim/bundle/vim-colorschemes/colors/* ~/.vim/colors/  
+cp ~/.vim/plugged/vim-colorschemes/colors/* ~/.vim/colors/  
 
 # get preferred molokai
 cd ~/.vim/colors && rm molokai.vim && \                                       

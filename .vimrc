@@ -75,8 +75,11 @@ call plug#begin('~/.vim/plugged')
 
 " fzf fuzzy finder 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+nnoremap <c-p> :FZF<cr> " map  ctrlp's <c-p> to FZF
 
-Plug "sheerun/vim-polyglot" " language pack
+
+" Languages Pack: Syntax, Indent, Compiler etc
+Plug 'sheerun/vim-polyglot' 
 Plug 'flazz/vim-colorschemes' " colorschemes: uses ~/.vim/colors/*
 
 " Git plugins
@@ -125,48 +128,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " neocomplete
 if has('lua')
-	Plugin 'Shougo/neocomplete.vim'
+	Plug 'Shougo/neocomplete.vim'
 	let g:neocomplete#enable_at_startup = 1
 end
-
-Plug 'othree/html5.vim' " language: html5
-
-Plug 'elzr/vim-json' 
-let g:vim_json_syntax_conceal = 0
-
-Plug 'pangloss/vim-javascript'
-
-Plug 'posva/vim-vue'
-
-" language: go
-Plug 'fatih/vim-go', { 'tag': '*' } "gotags
-let g:tagbar_type_go = {
-			\ 'ctagstype' : 'go',
-			\ 'kinds'     : [
-			\ 'p:package',
-			\ 'i:imports:1',
-			\ 'c:constants',
-			\ 'v:variables',
-			\ 't:types',
-			\ 'n:interfaces',
-			\ 'w:fields',
-			\ 'e:embedded',
-			\ 'm:methods',
-			\ 'r:constructor',
-			\ 'f:functions'
-			\ ],
-			\ 'sro' : '.',
-			\ 'kind2scope' : {
-			\ 't' : 'ctype',
-			\ 'n' : 'ntype'
-			\ },
-			\ 'scope2kind' : {
-			\ 'ctype' : 't',
-			\ 'ntype' : 'n'
-			\ },
-			\ 'ctagsbin'  : 'gotags',
-			\ 'ctagsargs' : '-sort -silent'
-			\ }
 
 " Initialize plugin system
 call plug#end()
