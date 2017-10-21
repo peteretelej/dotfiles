@@ -136,7 +136,7 @@ set -o vi
 . ~/.path
 
 
-localbashrc=$HOME/.bashrc_local
+localbashrc=$HOME/.bashrc.local
 
 if [[ -f $localbashrc ]]
 then
