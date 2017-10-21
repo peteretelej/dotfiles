@@ -1,4 +1,4 @@
-# 
+# dotfiles
 Just browse the dotfiles themselves for nice configs, otherwise you can install them using the procedure below:
 
 1. Get the dotfiles
@@ -11,3 +11,9 @@ cd dotfiles
 ./install.sh
 ```
 
+
+# TIPS
+
+## Vim Tips
+- Use CtrlP or fzf instead of NerdTree 
+- Use tmux instead of vim tabs

@@ -35,6 +35,10 @@ then
 	exit 2
 fi
 
+# install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # create directory for colors
 mkdir -p ~/.vim/colors 
 

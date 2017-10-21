@@ -14,6 +14,7 @@ set t_Co=256 "256 colors
 "set background=dark
 colorscheme molokai
 
+" Basic vim tweaks
 syntax enable           " enable syntax processing
 set laststatus=2		" always showstatusline
 set statusline=%f 		"tail of the filename
@@ -34,8 +35,10 @@ set autoread 		" autoreload file edited outside vim
 set ignorecase smartcase " search only case sensitive if has uppercase
 set showcmd            " show commands being typed
 set nowrap		" switch wrap off
+set relativenumber  "use relative numbers
 
-" Use git to protect data. No auto backups/swapfiles
+
+" No auto backups/swapfiles. Use git etc
 set nobackup	
 set noswapfile
 
@@ -45,58 +48,98 @@ set noswapfile
 autocmd BufRead,BufNewFile *.gohtml set filetype=html
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-filetype off                  " required by Vundle
+au FileType json setlocal equalprg=python\ -m\ json.tool " fix json gg=G formatting
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+"==============[ Highlight col 81 ]=============================
+"set colorcolumn=81 "old method
+highlight ColorColumn ctermbg=red guibg=red
+call matchadd('ColorColumn', '\%81v', 100)
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"======[ CAUTION: DON'T FEED THE ZOMBIES use vim conventions]============
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+"" Allow mouse if exists, :shrug:
+"if has('mouse')
+"	set mouse=a
+"endif
 
-" Dockerfile
-Plugin 'ekalinin/Dockerfile.vim'
+" TagbarToggle Key mapping
+nmap <F8> :TagbarToggle<CR>
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
+" use vim-plug and custom directory plugged
+call plug#begin('~/.vim/plugged')
+
+" EXAMPLES: https://github.com/junegunn/vim-plug#example
+
+" fzf fuzzy finder 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug "sheerun/vim-polyglot" " language pack
+Plug 'flazz/vim-colorschemes' " colorschemes: uses ~/.vim/colors/*
+
+" Git plugins
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" tagbar 
+Plug 'majutsushi/tagbar'
+
+Plug 'tpope/vim-commentary' "comments
+
+" unobstructive scratch buffer
+Plug 'mtth/scratch.vim'
+
+" tmuxline
+Plug 'edkolev/tmuxline.vim'
+let g:tmuxline_separators = {
+			\ 'left' : '',
+			\ 'left_alt': '>',
+			\ 'right' : '',
+			\ 'right_alt' : '<',
+			\ 'space' : ' '}
+
+"# better vim statusline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme ='papercolor'
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+" /# better vim statusline
 
 
-"=============[ My VIM plugins ]====================================
+" neocomplete
+if has('lua')
+	Plugin 'Shougo/neocomplete.vim'
+	let g:neocomplete#enable_at_startup = 1
+end
 
-Plugin 'tpope/vim-commentary'
+Plug 'othree/html5.vim' " language: html5
 
-""======= CAUTION: DO NOT FEED THE ZOMBIES, use ctrlp =========
-"" NERDTree
-"Plugin 'scrooloose/nerdtree'
-"map <C-k> :NERDTreeToggle<CR> " Map NERDTree Toggle
-"let g:NERDTreeDirArrowExpandable = '▸'
-"let g:NERDTreeDirArrowCollapsible = '▾'
-""autocmd StdinReadPre * let s:std_in=1 	" auto open NERDTree if no files specified
-""autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif " auto open cont.. 
-""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " autoclosevim
-"let g:NERDTreeShowHidden=1
+Plug 'elzr/vim-json' 
+let g:vim_json_syntax_conceal = 0
 
+Plug 'pangloss/vim-javascript'
 
-"======================[ GO plugins ]=======================
-Plugin 'fatih/vim-go' " Rem to :GoInstallBinaries & :GoUpdateBinaries
+Plug 'posva/vim-vue'
 
-"gotags
+" language: go
+Plug 'fatih/vim-go', { 'tag': '*' } "gotags
 let g:tagbar_type_go = {
 			\ 'ctagstype' : 'go',
 			\ 'kinds'     : [
@@ -125,134 +168,9 @@ let g:tagbar_type_go = {
 			\ 'ctagsargs' : '-sort -silent'
 			\ }
 
-Plugin 'majutsushi/tagbar'
+" Initialize plugin system
+call plug#end()
 
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 0 " prevent ctrlp from autosetting workdir . irksome af on Monorepos
-let g:ctrlp_custom_ignore = '\v[\/](Godeps|vendor|dist)|(\.(git|svn))$' " hide directories from ctlrp
-
-Plugin 'mtth/scratch.vim'
-
-" tmuxline
-Plugin 'edkolev/tmuxline.vim'
-let g:tmuxline_separators = {
-			\ 'left' : '',
-			\ 'left_alt': '>',
-			\ 'right' : '',
-			\ 'right_alt' : '<',
-			\ 'space' : ' '}
-
-
-" # Theme
-Plugin 'flazz/vim-colorschemes'  " rem to copy all ./colors/*.vim to ~/.vim/colors
-
-" # Neocomplete
-"Plugin 'Shougo/neocomplete.vim'
-"let g:neocomplete#enable_at_startup = 1
-if has('lua')
-	Plugin 'Shougo/neocomplete.vim'
-	let g:neocomplete#enable_at_startup = 1
-end
-
-"# better vim statusline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-let g:airline_theme ='papercolor'
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-" /# better vim statusline
-
-" Surround
-Plugin 'tpope/vim-surround'
-
-" gitgutter
-Plugin 'airblade/vim-gitgutter'
-
-"syntastic
-Plugin 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-
-"========== Javascript Plugins ====================
-" vim-json
-Plugin 'elzr/vim-json'
-let g:vim_json_syntax_conceal = 0
-" pretty format json properly
-au FileType json setlocal equalprg=python\ -m\ json.tool
-
-Plugin 'pangloss/vim-javascript'
-
-Plugin 'posva/vim-vue'
-
-Plugin 'StanAngeloff/php.vim'
-
-" html
-Plugin 'othree/html5.vim'
-
-" yaml 
-Plugin 'pearofducks/ansible-vim'
-
-
-
-"========== End of  Plugins =======================
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-"==============[ Highlight col 81 ]=============================
-"set colorcolumn=81 "old method
-highlight ColorColumn ctermbg=red guibg=red
-call matchadd('ColorColumn', '\%81v', 100)
-
-"===============[ Set relatvenumber ]============================
-set relativenumber
-set number
-
-"======[ CAUTION: DON'T FEED THE ZOMBIES]=======================
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-"" Allow mouse if exists, :shrug:
-"if has('mouse')
-"	set mouse=a
-"endif
-
-" TagbarToggle Key mapping
-nmap <F8> :TagbarToggle<CR>
 
 " ===== Allow local vimrc configs ========
 if filereadable($HOME . "/.vimrc.local")
