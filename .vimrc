@@ -81,6 +81,7 @@ nnoremap <c-p> :FZF<cr> " map  ctrlp's <c-p> to FZF
 " Languages Pack: Syntax, Indent, Compiler etc
 Plug 'sheerun/vim-polyglot' 
 Plug 'flazz/vim-colorschemes' " colorschemes: uses ~/.vim/colors/*
+Plug 'SirVer/ultisnips'
 
 " Git plugins
 Plug 'tpope/vim-fugitive'
@@ -131,6 +132,9 @@ if has('lua')
 	Plug 'Shougo/neocomplete.vim'
 	let g:neocomplete#enable_at_startup = 1
 end
+
+" language: go
+Plug 'fatih/vim-go', { 'tag': '*' }
 
 " Initialize plugin system
 call plug#end()
