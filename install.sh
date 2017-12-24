@@ -69,7 +69,7 @@ vim -c 'PlugInstall' -c 'qa!'
 cp ~/.vim/plugged/vim-colorschemes/colors/* ~/.vim/colors/  
 
 # get preferred molokai
-cd ~/.vim/colors && rm molokai.vim && wget https://raw.githubusercontent.com/fatih/molokai/master/colors/molokai.vim
+cd ~/.vim/colors && wget -N https://raw.githubusercontent.com/fatih/molokai/master/colors/molokai.vim
 
 if [ "$INSTALLTYPE" != "full" ]
 then
