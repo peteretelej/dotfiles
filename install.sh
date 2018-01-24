@@ -23,6 +23,7 @@ fi
 
 sudo apt-get update && \
 	sudo apt-get install -y \
+	build-essential \
 	git\
 	curl \
 	vim-nox \
@@ -61,6 +62,7 @@ do
 		exit 2
 	fi
 done
+
 
 # install vim plugins
 vim -c 'PlugInstall' -c 'qa!'
