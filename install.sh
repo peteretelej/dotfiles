@@ -29,13 +29,30 @@ sudo apt-get update && \
 	vim-nox \
 	tmux \
 	exuberant-ctags \
-	silversearcher-ag
+	silversearcher-ag 
 
 if [ $? -ne 0 ]
 then
 	echo "ERROR: failed to sudo update & install stuff."
 	exit 2
 fi
+
+# Install npm
+sudo apt-get install -y nodejs
+which npm 2>&1 >/dev/null
+if [ $? -gt 0 ]
+then
+sudo apt-get install -y npm
+fi 
+
+# set global npm
+mkdir $HOME/npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+# install yarn
+npm install -g yarn 2>&1 >/dev/null
+
+
 
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

@@ -90,7 +90,9 @@ Plug 'airblade/vim-gitgutter'
 " tagbar 
 Plug 'majutsushi/tagbar'
 
-
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 
 Plug 'tpope/vim-commentary' "comments
 
