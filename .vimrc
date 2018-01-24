@@ -78,8 +78,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 nnoremap <c-p> :FZF<cr> " map  ctrlp's <c-p> to FZF
 
 
-" Languages Pack: Syntax, Indent, Compiler etc
-Plug 'sheerun/vim-polyglot' 
 Plug 'flazz/vim-colorschemes' " colorschemes: uses ~/.vim/colors/*
 Plug 'SirVer/ultisnips'
 
@@ -93,6 +91,8 @@ Plug 'majutsushi/tagbar'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+let g:prettier#config#tab_width = 4
+let g:prettier#config#semi = 'false'
 
 Plug 'tpope/vim-commentary' "comments
 

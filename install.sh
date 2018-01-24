@@ -62,8 +62,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 mkdir -p ~/.vim/colors 
 
 # install powerline fonts
+ls $HOME/.local/share/fonts 2>&1 >/dev/null
+if [ $? -ne 0 ]
+then
 git clone https://github.com/powerline/fonts.git && cd fonts && \
 	./install.sh && cd .. && rm -rf fonts
+fi
 
 
 
