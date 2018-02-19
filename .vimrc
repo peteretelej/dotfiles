@@ -48,7 +48,7 @@ set noswapfile
 autocmd BufRead,BufNewFile *.gohtml set filetype=html
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-au FileType json setlocal equalprg=python\ -m\ json.tool " fix json gg=G formatting
+"au FileType json setlocal equalprg=python\ -m\ json.tool " fix json gg=G formatting
 
 "==============[ Highlight col 81 ]=============================
 "set colorcolumn=81 "old method
@@ -87,6 +87,8 @@ Plug 'airblade/vim-gitgutter'
 
 " tagbar 
 Plug 'majutsushi/tagbar'
+
+Plug 'posva/vim-vue'
 
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
