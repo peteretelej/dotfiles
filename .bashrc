@@ -121,6 +121,9 @@ if [[ $TERM == xterm ]]; then
 	TERM=xterm-256color
 fi
 
+GPG_TTY=$(tty) 
+export GPG_TTY
+
 # Set vi as default editor
 set -o vi
 
