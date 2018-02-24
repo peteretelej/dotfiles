@@ -90,6 +90,8 @@ Plug 'majutsushi/tagbar'
 
 Plug 'posva/vim-vue'
 
+Plug 'w0rp/ale'
+
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }

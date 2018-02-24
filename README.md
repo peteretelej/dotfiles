@@ -15,5 +15,5 @@ cd dotfiles
 # TIPS
 
 ## Vim Tips
-- Use CtrlP or fzf instead of NerdTree 
+- Use __CtrlP__ or __fzf__ instead of NerdTree 
 - Use tmux instead of vim tabs
