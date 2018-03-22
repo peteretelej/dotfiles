@@ -1,10 +1,10 @@
 #!/bin/bash
 
 function proxyset() {
-	if [[ "$1" = "http"* ]]
+	if ! [[ "$1" = "http"* ]]
 	then 
 		echo "proxyset requires a valid http addr"
-		exit 2
+		return
 	fi
 
 	export {http,https,ftp}_proxy=$1
