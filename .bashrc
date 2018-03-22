@@ -121,6 +121,9 @@ if [[ $TERM == xterm ]]; then
 	TERM=xterm-256color
 fi
 
+
+
+
 GPG_TTY=$(tty) 
 export GPG_TTY
 
@@ -137,6 +140,8 @@ set -o vi
 
 # load .path for env variables
 . ~/.path
+
+. ~/.fun
 
 
 localbashrc=$HOME/.bashrc.local
