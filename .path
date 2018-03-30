@@ -12,7 +12,10 @@ export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 # rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# android devt
 export ANDROID_HOME="$HOME/androidsdks"
+export PATH="$PATH:${ANDROID_HOME}/tools"
+export PATH="$PATH:${ANDROID_HOME}/platform-tools"
 
 # user global npm
 export PATH="$HOME/.npm-global/bin:$PATH"
