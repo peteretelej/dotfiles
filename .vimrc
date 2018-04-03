@@ -98,6 +98,10 @@ Plug 'prettier/vim-prettier', {
 let g:prettier#config#tab_width = 4
 let g:prettier#config#semi = 'false'
 
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 1
+
 Plug 'tpope/vim-commentary' "comments
 
 " unobstructive scratch buffer
