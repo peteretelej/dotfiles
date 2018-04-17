@@ -38,11 +38,10 @@ then
 fi
 
 # Install npm
-sudo apt-get install -y nodejs
 which npm 2>&1 >/dev/null
 if [ $? -gt 0 ]
 then
-sudo apt-get install -y npm
+curl -0 -L https://npmjs.org/install.sh | sudo sh
 fi 
 
 # set global npm
