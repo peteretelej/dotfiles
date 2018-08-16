@@ -48,6 +48,8 @@ set noswapfile
 autocmd BufRead,BufNewFile *.gohtml set filetype=html
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+autocmd FileType javascript set formatprg=prettier\ --stdin
+
 "au FileType json setlocal equalprg=python\ -m\ json.tool " fix json gg=G formatting
 
 "==============[ Highlight col 81 ]=============================

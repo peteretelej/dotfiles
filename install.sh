@@ -52,6 +52,8 @@ export PATH=~/.npm-global/bin:$PATH
 npm install -g yarn 2>&1 >/dev/null
 
 
+yarn global add prettier 
+
 
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
