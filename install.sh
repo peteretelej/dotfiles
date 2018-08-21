@@ -51,6 +51,9 @@ export PATH=~/.npm-global/bin:$PATH
 # install yarn
 npm install -g yarn 2>&1 >/dev/null
 
+# install standardjs linter
+npm install standard --global
+
 
 yarn global add prettier 
 

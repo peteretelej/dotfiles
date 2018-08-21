@@ -93,10 +93,13 @@ Plug 'majutsushi/tagbar'
 Plug 'posva/vim-vue'
 
 Plug 'w0rp/ale'
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
 
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+\ 'do': 'yarn install',
+\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 let g:prettier#config#tab_width = 4
 let g:prettier#config#semi = 'false'
 
