@@ -11,7 +11,7 @@ set nocompatible        " be iMproved
 "	candy, 	grb256, distinguished, candycode
 "	(light)- papercolor, github
 set t_Co=256 "256 colors
-"set background=dark
+set background=dark
 colorscheme molokai
 
 " Basic vim tweaks
