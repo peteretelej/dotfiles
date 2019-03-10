@@ -49,7 +49,6 @@ autocmd BufRead,BufNewFile *.gohtml set filetype=html
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 autocmd FileType javascript set formatprg=prettier\ --stdin
-autocmd FileType go set autowrite
 
 " use double space as tabstop in js
 autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
