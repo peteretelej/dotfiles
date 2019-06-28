@@ -23,6 +23,8 @@ export PATH="$PATH:${ANDROID_HOME}/platform-tools"
 
 # user global npm
 export PATH="$HOME/.npm-global/bin:$PATH"
+#yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # FZF preferred command
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --depth 20 -f -g ""'
