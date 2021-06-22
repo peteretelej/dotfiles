@@ -12,12 +12,10 @@ set nocompatible        " be iMproved
 "	(light)- papercolor, github
 set t_Co=256 "256 colors
 set background=dark
-colorscheme molokai
 
 " Basic vim tweaks
 syntax enable           " enable syntax processing
 set laststatus=2		" always showstatusline
-set statusline=%f 		"tail of the filename
 set ruler
 set number              " show line numbers
 "set cursorline          " highlight current line
@@ -35,20 +33,38 @@ set autoread 		" autoreload file edited outside vim
 set ignorecase smartcase " search only case sensitive if has uppercase
 set showcmd            " show commands being typed
 set nowrap		" switch wrap off
-set relativenumber  "use relative numbers
+"set relativenumber  "use relative numbers
 
 
 " No auto backups/swapfiles. Use git etc
 set nobackup	
 set noswapfile
 
-"" statusline <- Replaced by airline
-"set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+"" statusline
+set laststatus=2
+set statusline=
+set statusline+=%7*\[%n]                                  "buffernr
+set statusline+=%1*\ %<%F\                                "File+path
+set statusline+=%2*\ %y\                                  "FileType
+set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
+set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
+set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
+set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
+set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
+set statusline+=%9*\ col:%03c\                            "Colnr
+set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+
+function! HighlightSearch()
+  if &hls
+    return 'H'
+  else
+    return ''
+  endif
+endfunction
+
 
 autocmd BufRead,BufNewFile *.gohtml set filetype=html
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-autocmd FileType javascript set formatprg=prettier\ --stdin
 
 " use double space as tabstop in js
 autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
@@ -72,81 +88,6 @@ noremap <Right> <NOP>
 
 " TagbarToggle Key mapping
 nmap <F8> :TagbarToggle<CR>
-
-" use vim-plug and custom directory plugged
-call plug#begin('~/.vim/plugged')
-
-" EXAMPLES: https://github.com/junegunn/vim-plug#example
-
-" fzf fuzzy finder 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-nnoremap <c-p> :FZF<cr> " map  ctrlp's <c-p> to FZF
-
-
-Plug 'flazz/vim-colorschemes' " colorschemes: uses ~/.vim/colors/*
-Plug 'SirVer/ultisnips'
-
-" Git plugins
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-" tagbar 
-Plug 'majutsushi/tagbar'
-
-Plug 'posva/vim-vue'
-
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-let g:jsx_ext_required = 1
-
-Plug 'tpope/vim-commentary' "comments
-
-" unobstructive scratch buffer
-Plug 'mtth/scratch.vim'
-
-" tmuxline
-Plug 'edkolev/tmuxline.vim'
-let g:tmuxline_separators = {
-			\ 'left' : '',
-			\ 'left_alt': '>',
-			\ 'right' : '',
-			\ 'right_alt' : '<',
-			\ 'space' : ' '}
-
-"# better vim statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme ='papercolor'
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-" /# better vim statusline
-
-
-" neocomplete
-if has('lua')
-	Plug 'Shougo/neocomplete.vim'
-	let g:neocomplete#enable_at_startup = 1
-end
-
-" language: go
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Initialize plugin system
-call plug#end()
 
 
 " ===== Allow local vimrc configs ========

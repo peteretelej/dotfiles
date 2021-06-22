@@ -11,9 +11,6 @@ cd dotfiles
 ./install.sh
 ```
 
+Disclaimer: 
 
-# TIPS
-
-## Vim Tips
-- Use __CtrlP__ or __fzf__ instead of NerdTree 
-- Use tmux instead of vim tabs
+> I no longer actively use vim so the vim configs here have been reset to sensible defaults, and all plugins removed.

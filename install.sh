@@ -51,21 +51,6 @@ export PATH=~/.npm-global/bin:$PATH
 # install yarn
 npm install -g yarn 2>&1 >/dev/null
 
-# install vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# create directory for colors
-mkdir -p ~/.vim/colors 
-
-# install powerline fonts
-ls $HOME/.local/share/fonts 2>&1 >/dev/null
-if [ $? -ne 0 ]
-then
-git clone https://github.com/powerline/fonts.git && cd fonts && \
-	./install.sh && cd .. && rm -rf fonts
-fi
-
 
 
 echo "installing dotfiles into user profile"
@@ -82,29 +67,4 @@ do
 done
 
 
-# install vim plugins
-vim -c 'PlugInstall' -c 'qa!'
-
-# copy colorschemes to correct directory
-cp ~/.vim/plugged/vim-colorschemes/colors/* ~/.vim/colors/  
-
-# get preferred molokai
-cd ~/.vim/colors && wget -N https://raw.githubusercontent.com/fatih/molokai/master/colors/molokai.vim
-
-if [ "$INSTALLTYPE" != "full" ]
-then
-	echo "Simple install.sh done."
-	exit 0
-fi
-
-go version 2>&1 1>/dev/null
-if [ $? -gt 0 ] 
-then
-	echo "Go not installed, skipping GoInstallBinaries"
-else
-	vim -c 'GoInstallBinaries' -c 'qa!'
-fi
-
-
-echo "Full install.sh done."
-
+echo "Install done."
