@@ -1,47 +1,38 @@
-set shell=/bin/bash " use bash shell, fish shell fix
+" ~/.vimrc: Vim configuration without plugins
+" Focused on core functionality for occasional editing
 
-set nocompatible        " be iMproved
+" Use bash shell (fixes fish shell issues)
+set shell=/bin/bash
 
-" COLORSCHEMES
-"
-" - if on xterm/ubuntu; add to bashrc - export TERM='xterm-256color'
-"
-" Favorite :colors 
-"	(dark)- gruvbox,xoria256,molokai, vividchalk, inkpot, wombat, zenburn,,
-"	candy, 	grb256, distinguished, candycode
-"	(light)- papercolor, github
-set t_Co=256 "256 colors
-set background=dark
+" Basic settings
+set nocompatible        " Use Vim defaults (not Vi)
+set encoding=utf-8      " Use UTF-8 encoding
+set laststatus=2        " Always show status line
+set ruler               " Show cursor position
+set number              " Show line numbers
+set history=1000        " Remember more commands and search history
+set undolevels=1000     " Use many levels of undo
+set title               " Change terminal title
+set hidden              " Allow background buffers without saving
+set visualbell          " Don't beep
+set noerrorbells        " Don't beep
+set showmatch           " Show matching brackets
+set autoread            " Reload files changed outside vim
+set ignorecase          " Case insensitive search...
+set smartcase           " ...unless contains uppercase
+set showcmd             " Show commands being typed
+set nowrap              " Don't wrap lines by default
 
-" Basic vim tweaks
-syntax enable           " enable syntax processing
-set laststatus=2		" always showstatusline
-set ruler
-set number              " show line numbers
-"set cursorline          " highlight current line
-set incsearch           " search as characters are entered
-set hlsearch            " highlight matches
-set history=1000         " remember more commands and search history
-set undolevels=1000      " use many muchos levels of undo
-set title                " change the terminal's title
-set hidden 		" allow unsaved buffers
-set visualbell		" don't beep
-set noerrorbells	" don't beep
-set encoding=utf-8              " Set default encoding to UTF-8
-set showmatch		" show matching parenthesis
-set autoread 		" autoreload file edited outside vim
-set ignorecase smartcase " search only case sensitive if has uppercase
-set showcmd            " show commands being typed
-set nowrap		" switch wrap off
-"set relativenumber  "use relative numbers
-
-
-" No auto backups/swapfiles. Use git etc
-set nobackup	
+" No backup/swap files (use version control instead)
+set nobackup
 set noswapfile
 
-"" statusline
-set laststatus=2
+" Color and syntax
+syntax enable           " Enable syntax highlighting
+set t_Co=256            " 256 colors
+set background=dark     " Dark background by default
+
+" Status line configuration
 set statusline=
 set statusline+=%7*\[%n]                                  "buffernr
 set statusline+=%1*\ %<%F\                                "File+path
@@ -54,6 +45,7 @@ set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%9*\ col:%03c\                            "Colnr
 set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
 
+" Function for showing search highlight status in statusline
 function! HighlightSearch()
   if &hls
     return 'H'
@@ -62,35 +54,30 @@ function! HighlightSearch()
   endif
 endfunction
 
+" File type detection
+filetype on
+filetype plugin on
+filetype indent on
 
+" File type specifics
 autocmd BufRead,BufNewFile *.gohtml set filetype=html
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" use double space as tabstop in js
 autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
 
-"au FileType json setlocal equalprg=python\ -m\ json.tool " fix json gg=G formatting
-
-"==============[ Highlight col 81 ]=============================
-"set colorcolumn=81 "old method
+" Highlight column 81 for line length guidance
 highlight ColorColumn ctermbg=red guibg=red
 call matchadd('ColorColumn', '\%81v', 100)
 
-"======[ CAUTION: DON'T FEED THE ZOMBIES use vim conventions]============
+" Discourage arrow keys to build Vim muscle memory
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-"" Allow mouse if exists, :shrug:
-"if has('mouse')
-"	set mouse=a
-"endif
 
-" TagbarToggle Key mapping
-nmap <F8> :TagbarToggle<CR>
+" TagbarToggle key mapping (comment out if Tagbar not installed)
+" nmap <F8> :TagbarToggle<CR>
 
-
-" ===== Allow local vimrc configs ========
+" Allow local vimrc configurations
 if filereadable($HOME . "/.vimrc.local")
-	source ~/.vimrc.local
+  source ~/.vimrc.local
 endif

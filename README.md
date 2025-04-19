@@ -8,8 +8,10 @@ cd dotfiles
 ```
 2. Run dotfiles installation script
 ```bash
-./install.sh
+./install.sh --full
 ```
+- `--full` installs required OS tools (e.g. vim, tmux, htop etc.) and dotfiles.
+- You can omit the `--full` flag to only install the dotfiles.
 
 Disclaimer: 
 
