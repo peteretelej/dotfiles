@@ -146,7 +146,8 @@ if [ -d "$HOME/bin" ]; then
 fi
 
 # Go environment
-if [ -d "$HOME/go" ]; then
+if [ -d "/usr/local/go" ]; then
+	mkdir -p $HOME/go
 	export GOPATH="$HOME/go"
 	export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 fi
