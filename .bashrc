@@ -180,6 +180,11 @@ if [ -d "$HOME/.yarn/bin" ]; then
 	export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
 
+# pnpm - checks if directory exists
+if [ -d "$HOME/.local/share/pnpm" ]; then
+	export PNPM_HOME="$HOME/.local/share/pnpm"
+	export PATH="$PNPM_HOME:$PATH"
+fi
 
 if [ -d "$HOME/.bun" ]; then
 	export BUN_INSTALL="$HOME/.bun"
