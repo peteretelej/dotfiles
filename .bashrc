@@ -176,9 +176,9 @@ if [ -d "$HOME/androidsdks" ]; then
 fi
 
 # Node.js - npm global packages
-if [ -d "$HOME/.npm-global/bin" ]; then
-	export PATH="$HOME/.npm-global/bin:$PATH"
-fi
+mkdir -p "$HOME/.npm-global"
+export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Yarn - checks if directory exists
 if [ -d "$HOME/.yarn/bin" ]; then
