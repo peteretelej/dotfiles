@@ -45,13 +45,23 @@ echo "Created backup directory: $BACKUP_DIR"
 install_dotfile() {
 	SOURCE="$1"
 	DEST="$HOME/$2"
-	
+	LOCAL_FILE="$HOME/${2}.local"
+
 	# Backup existing file if it exists and is not a symlink
 	if [ -f "$DEST" ] && [ ! -L "$DEST" ]; then
 		echo "Backing up existing $DEST to $BACKUP_DIR"
 		cp "$DEST" "$BACKUP_DIR/"
+
+		# Find lines in live file that aren't in repo and save to .local
+		additions=$(grep -vxFf "$SOURCE" "$DEST" | grep -v '^$' | grep -v '^#$')
+		if [ -n "$additions" ]; then
+			echo "Found additions in $DEST, moving to $LOCAL_FILE"
+			echo "" >> "$LOCAL_FILE"
+			echo "# Preserved from $2 on $(date +%Y-%m-%d)" >> "$LOCAL_FILE"
+			echo "$additions" >> "$LOCAL_FILE"
+		fi
 	fi
-	
+
 	# Copy the file
 	echo "Installing $SOURCE to $DEST"
 	cp "$SOURCE" "$DEST"

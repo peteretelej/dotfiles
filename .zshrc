@@ -84,10 +84,6 @@ fi
 # Rust
 [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
-# Node.js - npm global packages
-mkdir -p "$HOME/.npm-global"
-export NPM_CONFIG_PREFIX="$HOME/.npm-global"
-export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Yarn
 [[ -d "$HOME/.yarn/bin" ]] && export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
@@ -103,6 +99,16 @@ if [[ -d "$HOME/.bun" ]]; then
 	export BUN_INSTALL="$HOME/.bun"
 	export PATH="$BUN_INSTALL/bin:$PATH"
 fi
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+#======================================
+# PATH ADDITIONS
+#======================================
+export PATH="$HOME/.local/bin:$PATH"
 
 #======================================
 # COMPLETIONS
