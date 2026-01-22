@@ -57,8 +57,6 @@ if command -v git >/dev/null 2>&1; then
 	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit"
 fi
 
-# Claude CLI
-[[ -f "$HOME/.claude/local/claude" ]] && alias claude="$HOME/.claude/local/claude"
 
 #======================================
 # PATH CONFIGURATION
